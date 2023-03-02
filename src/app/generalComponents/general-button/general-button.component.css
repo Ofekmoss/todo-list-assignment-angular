@@ -1,0 +1,13 @@
+.general-button__container {
+    width: 100%;
+    height: 100%;
+}
+
+.button {
+    border: 2px solid black;
+    color: black;
+}
+
+.button:hover {
+    background-color: orange;
+}

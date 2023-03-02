@@ -1,0 +1,29 @@
+.todo-list-data__container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.todo-input {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+}
+
+.todo-list {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+}
+
+.main-input {
+    width: 80%;
+}
+
+.tasks-list {
+    width: 80%;
+}
