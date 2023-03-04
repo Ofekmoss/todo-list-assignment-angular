@@ -1,3 +1,9 @@
 <div class="general-input__container">
-    <input class="input" type="text">
+    <input 
+        [ngClass]="isEditTodoInput ? 'edit-input' : 'main-input'" 
+        type="text" 
+        [(ngModel)]="inputValue" 
+        (keyup.enter)="onEnter()"
+        (blur)="onBlur()">
+        <!-- (ngModelChange)="onInputChange()" -->
 </div>

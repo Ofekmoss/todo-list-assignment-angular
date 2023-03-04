@@ -4,4 +4,17 @@
     margin: 3% 0;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+.checkbox {
+    width: 15%;
+}
+
+.input {
+    width: 50%;
+}
+
+.button {
+    width: 30%;
 }

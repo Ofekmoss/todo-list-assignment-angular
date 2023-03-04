@@ -1,6 +1,6 @@
 <div class="general-task__container">
-    <app-general-checkbox></app-general-checkbox>
-    <app-general-input></app-general-input>
-    <app-general-button></app-general-button>
-    <app-general-button></app-general-button>
+    <app-general-checkbox class="checkbox" [isChecked]="task.done" (checkboxClick)="onCheckboxChange($event)"></app-general-checkbox>
+    <app-general-input class="input" [(inputValue)]="task.title" (inputValueChange)="onEditClicked($event)" [isEditTodoInput]="true"></app-general-input>
+    <app-general-button class="button" text="Delete" (buttonClick)="onDeleteClicked()"></app-general-button>
+    <!-- <app-general-button text="Edit" (buttonClick)="onEditClicked('')"></app-general-button> -->
 </div>

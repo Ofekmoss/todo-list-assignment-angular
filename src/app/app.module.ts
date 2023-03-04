@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TodoListPageComponent } from './pages/todo-list-page/todo-list-page.component';
@@ -11,6 +11,7 @@ import { GeneralInputComponent } from './generalComponents/general-input/general
 import { GeneralTaskComponent } from './generalComponents/general-task/general-task.component';
 import { GeneralCheckboxComponent } from './generalComponents/general-checkbox/general-checkbox.component';
 import { GeneralButtonComponent } from './generalComponents/general-button/general-button.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,9 @@ import { GeneralButtonComponent } from './generalComponents/general-button/gener
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
