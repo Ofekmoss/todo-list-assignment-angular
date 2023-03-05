@@ -28,3 +28,7 @@
 .edit-input:focus, .edit-input:hover {
     border: 2px solid black;
 }
+
+.task-done {
+    text-decoration: line-through;
+}

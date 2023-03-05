@@ -3,15 +3,11 @@
     height: 100%;
 }
 
-input[type=checkbox]::before {
-    border: 2px solid black;
-}
-
 input[type=checkbox] {
     width: 25px;
     height: 25px;
     border: 2px solid black;
-    border-width: 10px;
+    cursor: pointer;
 }
 
 input[type=checkbox]:checked {

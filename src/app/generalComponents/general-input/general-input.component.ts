@@ -9,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class GeneralInputComponent implements OnInit {
   @Input() inputValue: string = "";
   @Input() isEditTodoInput: boolean = false;
+  @Input() placeHolder: string;
+  @Input() done: boolean;
   @Output() inputValueChange = new EventEmitter<string>();
   @Output() enterKeyPressed = new EventEmitter<string>();
 

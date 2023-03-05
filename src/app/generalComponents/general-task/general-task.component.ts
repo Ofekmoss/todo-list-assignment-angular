@@ -22,20 +22,25 @@ export class GeneralTaskComponent implements OnInit, OnDestroy {
 
   onCheckboxChange(isDone: boolean) {
     this.updateTodoSub = this.todoService.updateTodoDone(this.task.id, isDone).subscribe(() => {
-      this.todoService.todoListChange.next();
+      this.afterTodoListChange();
     });
   }
   
   onEditClicked(title: string) {
     this.editTodoSub = this.todoService.editTodo(this.task.id, title).subscribe(() => {
-      this.todoService.todoListChange.next();
+      this.afterTodoListChange();
     });
   }
   
   onDeleteClicked() {
     this.deleteTodoSub = this.todoService.deleteTodo(this.task.id).subscribe(() => {
-      this.todoService.todoListChange.next();
+      this.afterTodoListChange();
     });
+  }
+
+  afterTodoListChange() {
+    this.todoService.todoListChange.next();
+    this.todoService.sendTodoChangeInSocket();
   }
 
   ngOnDestroy(): void {

@@ -1,9 +1,13 @@
 <div class="general-input__container">
     <input 
-        [ngClass]="isEditTodoInput ? 'edit-input' : 'main-input'" 
+        [ngClass]="{
+            'task-done' : done,
+            'edit-input': isEditTodoInput,
+            'main-input': !isEditTodoInput
+        }" 
         type="text" 
+        [placeholder]="placeHolder"
         [(ngModel)]="inputValue" 
         (keyup.enter)="onEnter()"
         (blur)="onBlur()">
-        <!-- (ngModelChange)="onInputChange()" -->
 </div>

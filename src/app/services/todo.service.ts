@@ -4,6 +4,7 @@ import * as TodoConstants from "../shared/todo.constants"
 import { catchError, map } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { Task } from '../shared/task.model';
+import { Socket, io } from 'socket.io-client';
 
 interface getTodosResponse {
   id: string,
@@ -21,8 +22,10 @@ interface NewTodoResponse {
 })
 export class TodoService {
   public todoListChange = new Subject<void>();
-
+  public socket: Socket;
+  
   constructor(private http: HttpClient) {
+    this.socket = io(`${TodoConstants.DOMAIN}`); 
   }
 
   public getTodoList() {
@@ -84,5 +87,9 @@ export class TodoService {
       .delete<NewTodoResponse>(
         `${TodoConstants.DOMAIN}/todos/${taskId}`
       );
+  }
+
+  public sendTodoChangeInSocket() {
+    this.socket.emit(TodoConstants.TODO_CHANGE_EVENT);
   }
 }
