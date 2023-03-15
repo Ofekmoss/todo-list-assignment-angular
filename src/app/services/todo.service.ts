@@ -55,7 +55,6 @@ export class TodoService {
             return responseData.id;
           },
           catchError((error) => {
-            console.log(error)
             throw error;
           })
         )
@@ -69,6 +68,10 @@ export class TodoService {
         {
           done: isDone
         }
+      ).pipe(
+        catchError((error) => {
+          throw error;
+        })
       );
   };
 
@@ -79,6 +82,10 @@ export class TodoService {
         {
           title
         }
+      ).pipe(
+        catchError((error) => {
+          throw error;
+        })
       );
   };
 
