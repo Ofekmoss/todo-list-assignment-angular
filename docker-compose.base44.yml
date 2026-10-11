@@ -14,7 +14,10 @@ services:
       - >-
         npm ci --no-audit --no-fund &&
         exec npx ng serve --host 0.0.0.0 --port 4200 --poll 1000
+        --proxy-config proxy.conf.json
         --allowed-hosts ".$${BASE44_SANDBOX_HOST_DOMAIN}"
+    depends_on:
+      - api
     ports:
       - "3000:4200"
     restart: on-failure
@@ -24,6 +27,20 @@ services:
       timeout: 5s
       retries: 5
       start_period: 240s
+
+  api:
+    image: node:16
+    working_dir: /api
+    volumes:
+      - ./dev-api:/api
+    command: ["sh", "-ec", "npm install --no-audit --no-fund socket.io@4 && exec node server.js"]
+    restart: on-failure
+    healthcheck:
+      test: ["CMD-SHELL", "node -e \"require('http').get('http://localhost:3001/todos',r=>process.exit(r.statusCode==200?0:1)).on('error',()=>process.exit(1))\""]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 60s
 
 volumes:
   node_modules:
